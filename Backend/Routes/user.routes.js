@@ -5,15 +5,14 @@ const jwt = require("jsonwebtoken");
 
 const Usermodel = require("../models/userModel");
 
+//Get User
+UserRouter.get("/", async(req,res)=> {
+    const users = await Usermodel.find();
+    return res.send(users);
+})
 
-UserRouter.get("/", async (req, res) => {
 
-    res.send("Welcome")
-});
-
-
-
-// SIGNUP LOGIC
+// POST SIGNUP LOGIC
 UserRouter.post("/signup", async (req, res) => {
     const { email, password, firstName, lastName } = req.body;
     const userPresent = await Usermodel.findOne({ email })
@@ -40,7 +39,7 @@ UserRouter.post("/signup", async (req, res) => {
 });
 
 
-// LOGIN LOGIC
+// POST LOGIN LOGIC
 UserRouter.post("/login", async (req, res) => {
     const { email, password } = req.body;
     if (email && password) {
