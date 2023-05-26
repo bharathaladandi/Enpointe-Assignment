@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const connect = require('./Config/db');
 const { UserRouter } = require('./Routes/user.routes');
+const { TransRouter } = require('./Routes/transation.routes');
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(cors());
 const PORT = 8080;
 
 app.use("/users", UserRouter)
+app.use("/transaction", TransRouter)
 
 
 
