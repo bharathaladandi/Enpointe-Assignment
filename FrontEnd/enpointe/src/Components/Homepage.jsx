@@ -25,19 +25,23 @@ export const Homepage = () => {
     setAmount(e.target.value);
   };
 
+  const handleAmount = (e) => {
+    setAmount(e.target.value);
+  };
 
-  // const handleWithdrawal = async (e) => {
-  //   e.preventDefault();
 
-  //   try {
-  //     await axios.post('http://localhost:8080/transaction/withdraw', { amount });
-  //     console.log('Withdrawal successful');
+  const handleWithdrawal = async (e) => {
+    e.preventDefault();
 
-  //   } catch (error) {
+    try {
+      await axios.post('http://localhost:8080/transaction/withdraw', { amount });
+      console.log('Withdrawal successful');
 
-  //     console.error('Error occurred during withdrawal:', error);
-  //   }
-  // };
+    } catch (error) {
+
+      console.error('Error occurred during withdrawal:', error);
+    }
+  };
 
   const handleDeposit = async (e) => {
     e.preventDefault();
@@ -79,13 +83,13 @@ export const Homepage = () => {
       </div>
 
       <div>
-        {/* <form onSubmit={handleWithdrawal}>
+        <form onSubmit={handleWithdrawal}>
           <label>
             Withdrawal Amount:
-            <input placeholder='Type Amount here' type="number" value={amount} onChange={handleAmountChange} />
+            <input placeholder='Type Amount here' type="number" value={amount} onChange={handleAmount} />
           </label>
           <button type='submit'>Withdraw</button>
-        </form> */}
+        </form>
 
         <form onSubmit={handleDeposit}>
           <label>
